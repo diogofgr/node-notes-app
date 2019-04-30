@@ -5,10 +5,7 @@ require('dotenv').config();
 
 const app = express();
 const port = 8001;
-// MONGODB_URI =>
-// mongodb://heroku_12345678:random_password@ds029017.mLab.com:29017/heroku_12345678
 
-console.log(process.env.MONGODB_URI);
 const dbURL = 'mongodb://localhost:27017';
 
 // to process URL encoded forms
