@@ -12,7 +12,13 @@ GET /notes/:id
 ## Delete a note:
 DELETE /notes/:id
 
-## To start the MongoDB client on Linux:
+## Run locally:
+create a `.env` in the root of your application. Add the default location:
+```
+MONGODB_URI="mongodb://localhost:27017"
+```
+
+## To start MongoDB client on Linux:
 
 `$ sudo systemctl start mongodb`
 
