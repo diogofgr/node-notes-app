@@ -8,7 +8,7 @@ const dbURL = 'mongodb://localhost:27017';
 
 // to process URL encoded forms
 // (if this is missing you cannot access req.body in ./app/routes):
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ extended: true }));
 
 // connect to a local database client:
 MongoClient.connect(dbURL, { useNewUrlParser: true }, (err, client) => {

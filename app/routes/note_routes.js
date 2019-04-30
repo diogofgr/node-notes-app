@@ -70,4 +70,19 @@ module.exports = function(app, db) {
             }
         })
     })
+    
+    // DELETE all notes:
+    app.delete('/delete/notes', (req, res) => {
+        // console.log('deleteing -------------');
+
+        // db.collection('notes').drop();
+        db.collection('notes').deleteMany({}, (err, success) => {
+            if (err) {
+                res.send({ 'error': 'An error has occured.' });
+            } else {
+                // send back the new note if successful:
+                res.send(`All notes deleted!`);
+            }
+        })
+    })
 };
