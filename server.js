@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
-const port = 8001;
+const port = process.env.PORT;
 const dbURL = process.env.MONGODB_URI;
 
 // to process URL encoded forms
