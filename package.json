@@ -13,6 +13,7 @@
     "nodemon": "^1.18.10"
   },
   "scripts": {
-    "dev": "nodemon serve.js"
+    "dev": "nodemon serve.js",
+    "start": "node serve.js"
   }
 }
