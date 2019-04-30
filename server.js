@@ -5,8 +5,7 @@ require('dotenv').config();
 
 const app = express();
 const port = 8001;
-
-const dbURL = 'mongodb://localhost:27017';
+const dbURL = process.env.MONGODB_URI;
 
 // to process URL encoded forms
 // (if this is missing you cannot access req.body in ./app/routes):
