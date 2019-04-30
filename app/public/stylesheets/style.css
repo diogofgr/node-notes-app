@@ -1,0 +1,30 @@
+html, body {
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #d1e2ff;
+}
+
+.container {
+    padding: 20px 50px;
+    max-width: 800px;
+    background-color: #fff
+}
+
+.code-snippet {
+    background-color: #dddddd;
+    padding: 1px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        padding: 0px;
+    }
+    .container {
+        margin: 0;
+        padding: 2px;
+    }
+}
