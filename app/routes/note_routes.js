@@ -16,10 +16,10 @@ module.exports = function(app, db) {
     });
 
     // GET all notes:
-    app.get('/notes', (req, res) => {
+    app.get('/notes', (req, res, next) => {
         db.collection('notes').find({}).toArray((err, item) => {
             if (err) {
-                res.send({ 'error': 'An error has occured.' });
+                next(err);
             } else {
                 res.send(item);
             }
