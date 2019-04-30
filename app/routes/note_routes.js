@@ -27,13 +27,13 @@ module.exports = function(app, db) {
     })
 
     // GET a note by id:
-    app.get('/notes/:id', (req, res) => {
+    app.get('/notes/:id', (req, res, next) => {
         const id = (req.params.id);
         const details = { '_id': new ObjectID(id) };
 
         db.collection('notes').findOne(details, (err, item) => {
             if (err) {
-                res.send({ 'error': 'An error has occured.' });
+                next(err);
             } else {
                 // send back the new note if successful:
                 res.send(item.content);
@@ -42,14 +42,14 @@ module.exports = function(app, db) {
     })
 
     // UPDATE a note by id:
-    app.put('/notes/:id', (req, res) => {
+    app.put('/notes/:id', (req, res, next) => {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
         const note = { content: req.body.content, title: req.body.title };
 
         db.collection('notes').update(details, note, (err, result) => {
             if (err) {
-                res.send({ 'error: ': 'An error has occured.' });
+                next(err);
             } else {
                 res.send(note);
             }
@@ -57,31 +57,31 @@ module.exports = function(app, db) {
     });
 
     // DELETE a note by id:
-    app.delete('/notes/:id', (req, res) => {
+    app.delete('/notes/:id', (req, res, next) => {
         const id = req.params.id;
         const details = { '_id': new ObjectID(id) };
 
         db.collection('notes').deleteOne(details, (err, item) => {
             if (err) {
-                res.send({ 'error': 'An error has occured.' });
+                next(err);
             } else {
                 // send back the new note if successful:
-                res.send(`Note deleted (id: ${id})`);
+                res.send(details);
             }
         })
     })
     
     // DELETE all notes:
-    app.delete('/delete/notes', (req, res) => {
+    app.delete('/delete/notes', (req, res, next) => {
         // console.log('deleteing -------------');
 
         // db.collection('notes').drop();
         db.collection('notes').deleteMany({}, (err, success) => {
             if (err) {
-                res.send({ 'error': 'An error has occured.' });
+                next(err);
             } else {
                 // send back the new note if successful:
-                res.send(`All notes deleted!`);
+                res.send([]);
             }
         })
     })

@@ -14,11 +14,11 @@ app.use(bodyParser.json({ extended: true }));
 // connect to a local database client:
 MongoClient.connect(dbURL, { useNewUrlParser: true }, (err, client) => {
     if (err) {
-    console.error(err)
-    return;
+        console.error(err)
+        return;
     }
     // set the db being used
-    const db = client.db('node-notes-app');
+    const db = client.db(process.env.MONGODB_NAME);
 
     // send app and db to the routes:
     require('./app/routes')(app, db);
